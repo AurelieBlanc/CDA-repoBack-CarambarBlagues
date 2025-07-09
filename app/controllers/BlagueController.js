@@ -3,7 +3,7 @@ const Blague  = require("../models/Blague");
 
 
 // Controlleur pour interagir avec la BDD : -------------------------------- //
-const BlagueController = {
+const blagueController = {
 
 // Récupérer toutes les blagues : 
 getAllJokes : async(req, res) => {
@@ -27,11 +27,7 @@ getOneJoke :   async(req, res) => {
     try {
         const jokeId = req.params.id; 
 
-        const jokeById = await Blague.findByPk({
-            where: {
-                id: jokeId
-            }
-        })
+        const jokeById = await Blague.findByPk(jokeId);
 
         if(!jokeById) {
             res.status(404).json({ message: "Aucune blague n'a été trouvé"})
@@ -46,7 +42,7 @@ getOneJoke :   async(req, res) => {
 
 
 // Crée une nouvelle blague : 
-createJoke: async(req, res) => {
+createNewJoke: async(req, res) => {
     try { 
         const { question, answer } = req.body; 
 
@@ -66,3 +62,5 @@ createJoke: async(req, res) => {
     }
 }
 }
+
+module.exports = blagueController; 

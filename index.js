@@ -3,7 +3,7 @@ const express = require("express");
 const router = require ("./app/router"); 
 const dotenv = require("dotenv"); // pour lire les variables d'environnement du fichier .env et pouvoir les utiliser dans le code 
 const cors = require("cors"); // pour autoruiser toutes les origines en developpement
-const morgan = require("morgan"); // Pour logguer les requ^tes dans le terminal
+const morgan = require("morgan"); // Pour logguer les requêtes dans le terminal
 const sequelize = require ("./app/db"); // on appelle l'instance sequelize 
 
 
@@ -34,6 +34,12 @@ app.use(express.json())
 app.use(morgan("dev")); 
 
 
+// Test : 
+app.get("/", (req, res) => {
+  res.send("Bienvenue sur mon API de blagues !");
+});
+
+
 // Déclaration  des routes : 
 app.use(router);
 
@@ -52,7 +58,7 @@ sequelize.sync()
 .then(() => {
     console.log("Base de données synchronisée"); 
     app.listen (PORT, () => {
-    console.log(`Listening on port ${PORT}`)
+    console.log(`Listening on port ${PORT}, serveur démarré sur http://localhost:${PORT}`)
     }); 
 }).catch(err => console.error("Erreur lors de la synchronisation DB: ", err)); 
 
