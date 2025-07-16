@@ -7,6 +7,7 @@ const morgan = require("morgan"); // Pour logguer les requêtes dans le terminal
 const sequelize = require ("./app/db"); // on appelle l'instance sequelize 
 
 
+console.log("serveur qui démarre"); 
 
 
 // Chargement des variables d'environnement depuis le fichie .env :
@@ -22,8 +23,9 @@ const app = express();
 
 
 // Pour autoriser toutes les origines (domaines) des requests, à restreindre en prod :
-app.use(cors("*")) 
-
+app.use(cors({
+  origin: "http://localhost:5173"
+})); 
 
 // Pour parser le JSON des requêtes POST : 
 app.use(express.json()) 

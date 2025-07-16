@@ -12,10 +12,13 @@ const router = express.Router();
 // Route pour récupérer toutes les blagues : 
 router.get("/api/v1/jokes", BlagueController.getAllJokes ); 
 
+// Route pour récupérer une seule blague de manière aléatoire : 
+router.get("/api/v1/jokes/random", BlagueController.getOneJokeRandomly); 
+
 // Route pour récupérer une seule blague par ID : 
 router.get("/api/v1/jokes/:id", BlagueController.getOneJoke);
 
-// Route pour créer une nouvelle blague :
+// Route pour ajouter une nouvelle blague en BDD:
 router.post("/api/v1/jokes", BlagueController.createNewJoke);
 
 
