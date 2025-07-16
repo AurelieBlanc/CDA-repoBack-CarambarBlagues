@@ -24,7 +24,7 @@ const app = express();
 
 // Pour autoriser toutes les origines (domaines) des requests, à restreindre en prod :
 app.use(cors({
-  origin: ["http://localhost:5173", "https://AurelieBlanc.github.io/CDA-repoFront-CarambarBlagues"]
+  origin: ["http://localhost:5173", "https://aurelieBlanc.github.io"]
 })); 
 
 // Pour parser le JSON des requêtes POST : 
