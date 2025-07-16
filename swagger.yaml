@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Carambar API
+  version: 1.0.0
+  description: Documentation de l'API de blagues Carambar
+
+paths:
+  /api/v1/jokes:
+    get:
+      summary: Récupère toutes les blagues
+      tags:
+        - Blagues
+      responses:
+        "200":
+          description: Succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    question:
+                      type: string
+                      example: "Quelle est la femelle du hamster ?"
+                    answer:
+                      type: string
+                      example: "L'Amsterdam"
+        "500":
+          description: Erreur interne
+
+  /api/v1/jokes/random:
+    get:
+      summary: Récupère une blague de manière aléatoire
+      tags:
+        - Blagues
+      responses:
+        "200":
+          description: Succès
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    question:
+                      type: string
+                      example: "Quelle est la femelle du hamster ?"
+                    answer:
+                      type: string
+                      example: "L'Amsterdam"
+        "404":
+          description: "Aucune blague n'a été trouvé"
+        "500":
+          description: Erreur interne
